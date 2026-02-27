@@ -143,3 +143,75 @@
 .logout-btn:hover {
     color: var(--color-red);
 }
+
+/* Collapsed sidebar - ensure icons/avatars never shrink */
+.sidebar-collapsed .logo-icon,
+.sidebar-collapsed .nav-icon,
+.sidebar-collapsed .profile-avatar {
+    flex-shrink: 0;
+}
+
+/* Hide text elements when collapsed */
+.sidebar-collapsed .logo-text,
+.sidebar-collapsed .nav-item span,
+.sidebar-collapsed .profile-info,
+.sidebar-collapsed .logout-btn {
+    display: none;
+}
+
+.sidebar-collapsed:hover .logo-text,
+.sidebar-collapsed:hover .nav-item span,
+.sidebar-collapsed:hover .profile-info,
+.sidebar-collapsed:hover .logout-btn {
+    display: flex;
+}
+
+.sidebar-collapsed:hover .nav-item span,
+.sidebar-collapsed:hover .logo-text {
+    display: inline;
+}
+
+/* Logo area */
+.sidebar-collapsed .sidebar-logo {
+    padding: 2rem 1.25rem;
+}
+
+.sidebar-collapsed:hover .sidebar-logo {
+    padding: 2rem 1.5rem;
+}
+
+/* Nav items */
+.sidebar-collapsed .sidebar-nav {
+    padding: 0 0.625rem;
+}
+
+.sidebar-collapsed:hover .sidebar-nav {
+    padding: 0 1rem;
+}
+
+.sidebar-collapsed .nav-item {
+    padding: 0.75rem;
+    gap: 0;
+}
+
+.sidebar-collapsed:hover .nav-item {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+}
+
+/* Footer / Profile */
+.sidebar-collapsed .sidebar-footer {
+    padding: 1.5rem 0.625rem;
+}
+
+.sidebar-collapsed:hover .sidebar-footer {
+    padding: 1.5rem 1rem;
+}
+
+.sidebar-collapsed .profile-card {
+    gap: 0;
+}
+
+.sidebar-collapsed:hover .profile-card {
+    gap: 1rem;
+}

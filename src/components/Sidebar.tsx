@@ -31,8 +31,10 @@ export function Sidebar() {
         : profile?.role === 'gestor' ? 'Gestor'
         : 'Corretor';
 
+    const isCollapsed = pathname === '/mensagens';
+
     return (
-        <aside className="sidebar">
+        <aside className={`sidebar ${isCollapsed ? 'sidebar-collapsed' : ''}`}>
             <div className="sidebar-logo">
                 <div className="logo-icon">
                     <Hexagon fill="var(--accent-gold)" color="var(--accent-gold)" size={24} />

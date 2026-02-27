@@ -52,6 +52,23 @@ body {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  transition: width 0.2s ease;
+  overflow: hidden;
+}
+
+.sidebar.sidebar-collapsed {
+  width: 68px;
+  position: relative;
+  z-index: 100;
+}
+
+.sidebar.sidebar-collapsed:hover {
+  width: 260px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
 }
 
 .main-content {
