@@ -1,12 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Users, MessageSquare, Briefcase, Hexagon } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { LayoutDashboard, Users, MessageSquare, Briefcase, Hexagon, LogOut } from 'lucide-react';
+import { useAuth } from '@/components/AuthProvider';
+import { createClient } from '@/lib/supabase/client';
 import './Sidebar.css';
 
 export function Sidebar() {
     const pathname = usePathname();
+    const router = useRouter();
+    const { profile } = useAuth();
 
     const navItems = [
         { label: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -14,6 +18,18 @@ export function Sidebar() {
         { label: 'Mensagens', href: '/mensagens', icon: MessageSquare },
         { label: 'Agentes', href: '/agentes', icon: Users },
     ];
+
+    async function handleLogout() {
+        const supabase = createClient();
+        await supabase.auth.signOut();
+        router.push('/login');
+        router.refresh();
+    }
+
+    const displayName = profile?.full_name || 'Usuário';
+    const displayRole = profile?.role === 'admin' ? 'Administrador'
+        : profile?.role === 'gestor' ? 'Gestor'
+        : 'Corretor';
 
     return (
         <aside className="sidebar">
@@ -52,9 +68,16 @@ export function Sidebar() {
                         <div className="status-dot" />
                     </div>
                     <div className="profile-info">
-                        <div className="profile-name">Alex Morgan</div>
-                        <div className="profile-role">Corretor Sênior</div>
+                        <div className="profile-name">{displayName}</div>
+                        <div className="profile-role">{displayRole}</div>
                     </div>
+                    <button
+                        onClick={handleLogout}
+                        className="btn-ghost logout-btn"
+                        title="Sair"
+                    >
+                        <LogOut size={16} />
+                    </button>
                 </div>
             </div>
         </aside>

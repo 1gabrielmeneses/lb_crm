@@ -125,3 +125,21 @@
     font-size: 0.75rem;
     color: var(--text-secondary);
 }
+
+.logout-btn {
+    margin-left: auto;
+    padding: 0.375rem;
+    border-radius: 6px;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.logout-btn:hover {
+    color: var(--color-red);
+}
